@@ -488,7 +488,7 @@ if (23 > 10) {
 }
 
 const me = 'Eldrin';
-console.log(`I'am ${2021 - 1975} years old ${me}`)
+console.log(`I'm ${2021 - 1975} years old ${me}`)
 
 
 // *****
