@@ -151,6 +151,47 @@ if (!neighbours.includes('Germany')) {
 // 5 Change the name of one of your neighbouring countries. To do that, find the index of the country in the 'neighbours' array, and then use that index to change the array at that index position. For example, you can search for 'Sweden' in the array, and then replace it with 'Republic of Sweden'.
 neighbours[neighbours.indexOf('Argentina')] = 'Republica Argentina';
 console.log(neighbours);
+
+
+// ***** Introduction to Objects *****
+// 1 Create an object called 'myCountry' for a country of your choice, containing properties 'country', 'capital', 'language', 'population' and 'neighbours' (an array like we used in previous assignments)
+
+const myCountry = {
+    country: 'Brasil',
+    capital: 'Brasilia',
+    language: 'Portuguese',
+    population: 210,
+    neighbours: ['Peru', 'Argentina', 'Paraguay'],
+    describe: function() {
+        return `${this.country} has ${this.population} million ${this.language}-speaking people, ${this.neighbours.length} neighbouring countries and a capital called ${this.capital}`;
+    },
+    checkIsland: function() {
+        // this.island = this.neighbours.length === 0 ? 'true' : 'false';
+        // return this.island;
+        this.island = !Boolean(this.neighbours.length);
+        return this.island;
+    }
+};
+console.log(myCountry);
+
+// ***** Dot vs. Bracket Notation *****
+// 1 Using the object from the previous assignment, log a string like this to the console: 'Finland has 6 million finnish-speaking people, 3 neighbouring countries and a capital called Helsinki.'
+console.log(`${myCountry.country} has ${myCountry.population} million ${myCountry.language}-speaking people, ${myCountry.neighbours.length} neighbouring countries and a capital called ${myCountry.capital}`);
+
+// 2 Increase the country's population by two million using dot notation, and then decrease it by two million using brackets notation.
+console.log(myCountry.population += 2);
+console.log(myCountry['population'] -= 2);
+
+// ***** Object Methods *****
+// 1 Add a method called 'describe' to the 'myCountry' object. This method will log a string to the console, similar to the string logged in the previous assignment, but this time using the 'this' keyword.
+
+// 2 Call the 'describe' method
+console.log(myCountry.describe());
+console.log(myCountry.checkIsland());
+console.log(myCountry);
+// 3 Add a method called 'checkIsland' to the 'myCountry' object. This method will set a new property on the object, called 'isIsland'. 'isIsland' will be true if there are no neighbouring countries, and false if there are. Use the ternary operator to set the property.
+// Even simpler version(see why this works...)
+// this.island = !Boolean(this.neighbours.length)
 */
 
 
@@ -315,6 +356,7 @@ const age = calcAge(1975, 'Eldrin');
 
 
 // ***** arrays *****
+
 // The two more important data structure at least in Javascript are arrays and objects.M
 const friend1 = 'Michael';
 const friend2 = 'Steven';
@@ -356,13 +398,13 @@ const ages = [calcAge(years[0]), calcAge(years[1]), calcAge(years[years.length -
 console.log(ages);
 
 
-// ***** array methods *****
+// ***** ARRAYS methods *****
 
 const friends = ['Michel', 'Steven', 'Peter'];
 
-//Add Elements
 
-//friends.push('Jay');
+//Add Elements
+//friends.push('Jay'); //insert the element 'Jay' to the object, position: final.
 const newLength = friends.push('Jay'); // add element in the last position of array
 console.log(friends);
 console.log(newLength)
@@ -390,11 +432,99 @@ console.log(friends.includes(23)); // Method includes is very restricted 23 =/= 
 if (friends.includes('Steven')) {
     console.log('You have a friend called Steven');
 }
+
+//  ***** Objects ******
+
+// Define key value pairs, give a name to value elements from array, then we can give each of these values from array a name. the curly braces are to define a new object, fill up this object with key value pairs, the key is the variable name, then a colon and then the value, this can be any type that we want here, separate the other value with commas, ARRAYS is used more for order data, and OBJECTS for more unstructured data.
+
+const eldrinArray = [
+    'Eldrin',
+    'Córdova',
+    2021 - 1975,
+    'developer', ['Michael', 'Peter', 'Steven']
+];
+// this OBJECT called eldrin has five properties, this is called the object literal syntax.
+const eldrin = {
+    firstName: 'Eldrin', // each of these keys is called property, property 'firstName' with value 'Eldrin'
+    lastName: 'Córdova',
+    age: 2021 - 1975,
+    job: 'Developer',
+    friends: ['Michael', 'Peter', 'Steven']
+};
+
+// how to retrieve elements from object
+console.log(eldrin);
+console.log(eldrin.lastName);
+console.log(eldrin['lastName']);
+
+const nameKey = 'Name';
+console.log(eldrin['first' + nameKey]); // JS add name to first and make a string inside the bracket
+console.log(eldrin['last' + nameKey]);
+
+// console.log(jonas.'last' + nameKey) hear have a problem of unexpected string we need a brackets for make a string.
+
+const interestedIn = prompt('What do you want to  know about Eldrin? Choose between, firstName, lastName, age, job, and friends');
+
+if (eldrin[interestedIn]) {
+    console.log(eldrin[interestedIn]);
+} else {
+    console.log('Wrong request! Choose between firstName, lastName, age, job, and friends.')
+}
+
+//how to introduce properties in the object
+eldrin.location = 'Brasil';  // create the property 'location" and insert the value 'Brasil'
+eldrin['twitter'] = '@eldrincordova'; // create the property 'twitter" and insert the value '@eldrincordova'
+console.log(eldrin);
+
+//Challenge
+//'Eldrin has 3 friends, and his best friend is called Michael'
+console.log(`${eldrin.firstName} has ${eldrin.friends.length} friends, and his best friend is called ${eldrin.friends[0]} `);
+
+// search OPERATORS : mdm operators precedence
+
+
+// ***** OBJECT METHODS *****
+
+const eldrin = {
+    firstName: 'Eldrin', // each of these keys is called property, property 'firstName' with value 'Eldrin'
+    lastName: 'Córdova',
+    birthYear: 1975,
+    job: 'Developer',
+    friends: ['Michael', 'Peter', 'Steven'],
+    hasDriversLicense: true,
+
+    // calcAge: function(birthYear) { //this is a function type "expression" inside the object call METHOD
+    //     return 2021 - birthYear;
+    // }
+
+    // calcAge: function() { // using METHOD 'this' to fill the function, this <> 'name of the object'.
+    //     console.log(this);
+    //     return 2021 - this.birthYear;
+    // }
+
+    calcAge: function() { // using METHOD 'this' to fill the function, this <> 'name of the object'.
+        this.age = 2021 - this.birthYear;
+        return this.age;
+    },
+
+    getSummary: function() {
+        return `${this.firstName} is ${this.age}-year old ${this.job}, and he has ${this.hasDriversLicense? 'a': 'no'} drivers license.`
+    }
+};
+
+// console.log(eldrin.calcAge(1975));
+// console.log(eldrin['calcAge'](1975)); //Other way to call the method with brackets
+console.log(eldrin.calcAge());
+
+console.log(eldrin.age);
+console.log(eldrin.age);
+console.log(eldrin.age);
+
+//Challenge
+// "Eldrin is 46 years old developer, and he has a driver's license"
+
+console.log(eldrin.getSummary());
 */
-
-
-
-
 
 
 /*
@@ -439,6 +569,7 @@ let scoreKoalas1 = calcAverage1(65, 54, 49);
 
 // 3. Create a function 'checkWinner' that takes the average score of each team as parameters ('avgDolphins' and 'avgKoalas'), and then logs the winner to the console, together with the victory points, according to the rule above. 
 // Example: "Koalas win (30 vs. 13)"
+
 const checkWinner = function(avgDolphins, avgKoalas) {
     if (avgDolphins >= 2 * avgKoalas) {
         console.log(`Dolphins win (${avgDolphins} vs. ${avgKoalas})`);
@@ -450,6 +581,7 @@ const checkWinner = function(avgDolphins, avgKoalas) {
 }
 
 // 4. Use the 'checkWinner' function to determine the winner for both Data 1 and Data 2
+
 //test Data 1
 console.log(scoreDolphins1, scoreKoalas1);
 checkWinner(scoreDolphins1, scoreKoalas1);
@@ -469,15 +601,79 @@ checkWinner(scoreDolphins1, scoreKoalas1);
 // Apply this to the team's average scores 
 // GOOD LUCK
 
-*/
 
 //  ***** Coding Challenge #2 *****
 // Steven is still building his tip calculator, using the same rules as before: Tip 15% of the bill if the bill value is between 50 and 300, and if the value is different, the tip is 20%.
 // Your tasks:
 // 1. Write a function 'calcTip' that takes any bill value as an input and returns the corresponding tip, calculated based on the rules above (you can check out the code from first tip calculator challenge if you need to). Use the function type you like the most. Test the function using a bill value of 100
+
+// ***** description way ***** 
+// function calcTip(bill) {
+//     if (bill <= 300 && bill >= 50) {
+//         console.log(bill * 0.15);
+//     } else {
+//         console.log(bill * 0.2);
+//     }
+// }
+
+// ***** expression way *****
+const calcTip = function(bill) {
+    return bill <= 300 && bill >= 50 ? bill * 0.15 : bill * 0.2;
+}
+
+//  ***** arrow way *****
+// const calcTip = bill => bill <= 300 && bill >= 50 ? bill * 0.15 : bill * 0;
+
 // 2. And now let's use arrays! So create an array 'bills' containing the test data below
+const bills = [125, 555, 44];
 // 3. Create an array 'tips' containing the tip value for each bill, calculated from the function you created before 
+const tips = [calcTip(bills[0]), calcTip(bills[1]), calcTip(bills[2])];
+console.log(tips);
 // 4. Bonus: Create an array 'total' containing the total values, so the bill + tip 
+const total = [calcTip(bills[0]) + bills[0], calcTip(bills[1]) + bills[1], calcTip(bills[2]) + bills[2]];
+console.log(total);
 // Test data: 125, 555 and 44
 // Hint: Remember that an array needs a value in each position, and that value can actually be the returned value of a function! So you can just call a function as array values (so don't store the tip values in separate variables first, but right in the new 
 // array) GOOD LUCK
+
+*/
+
+//  ***** Coding Challenge #3 *****
+// Let's go back to Mark and John comparing their BMIs! This time, let's use objects to implement the calculations! Remember: BMI = mass / height ** 2 = mass / (height * height) (mass in kg and height in meter)
+// Your tasks:
+// 1. For each of them, create an object with properties for their full name, mass, and height (Mark Miller and John Smith)
+const markMiller = {
+    fullName: 'Mark Miller',
+    mass: 78,
+    height: 1.69,
+    calcBMI: function() {
+        this.bmi = this.mass / this.height ** 2;
+        return this.bmi;
+    }
+
+}
+markMiller.calcBMI(); // we need call this method for insert the property bmi into the object. need to explicited called.
+
+const johnSmit = {
+    fullName: 'John Smit',
+    mass: 92,
+    height: 1.95,
+    calcBMI: function() {
+        this.bmi = this.mass / (this.height ** 2);
+        return this.bmi;
+    }
+}
+johnSmit.calcBMI();
+
+// 2. Create a 'calcBMI' method on each object to calculate the BMI (the same method on both objects). Store the BMI value to a property, and also return it from the method
+console.log(markMiller);
+// 3. Log to the console who has the higher BMI, together with the full name and the respective BMI. Example: "John's BMI (28.3) is higher than Mark's (23.9)!"
+if (markMiller.bmi > johnSmit.bmi) {
+    console.log(`${markMiller.fullName}'s BMI (${markMiller.bmi} is hihigher than ${johnSmit.fullName}'s BMI (${johnSmit.bmi}) `)
+} else if (johnSmit.bmi > markMiller.bmi) {
+    console.log(`${johnSmit.fullName}'s BMI (${johnSmit.bmi} is hihigher than ${markMiller.fullName}'s BMI (${markMiller.bmi} ) `)
+}
+
+// Test data: Marks weights 78 kg and is 1.69 m tall. John weights 92 kg and is 1.95 m 
+// tall.
+// GOOD LUCK
