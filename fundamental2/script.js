@@ -172,6 +172,8 @@ const myCountry = {
         return this.island;
     }
 };
+myCountry.describe();
+myCountry.checkIsland();
 console.log(myCountry);
 
 // ***** Dot vs. Bracket Notation *****
@@ -192,9 +194,81 @@ console.log(myCountry);
 // 3 Add a method called 'checkIsland' to the 'myCountry' object. This method will set a new property on the object, called 'isIsland'. 'isIsland' will be true if there are no neighbouring countries, and false if there are. Use the ternary operator to set the property.
 // Even simpler version(see why this works...)
 // this.island = !Boolean(this.neighbours.length)
+
+
+// ***** Iteration: The for Loop *****
+// 1. There are elections in your country! In a small town, there are only 50 voters. Use a for loop to simulate the 50 people voting, by logging a string like this to the console(for numbers 1 to 50): 'Voter number 1 is currently voting'
+for (let vote = 1; vote <= 50; vote++) {
+    console.log(`Voter number ${vote} is currently voting`);
+}
+
+
+// ***** Looping Arrays, Breaking and Continuing *****
+// 1 Let's bring back the 'populations' array from a previous assignment
+
+const populations = [1441, 1353, 210, 60]
+
+function percentageOfWorld1(populations) {
+    return (populations / 7900) * 100;
+}
+// 2 Use a for loop to compute an array called 'percentages2' containing the percentages of the world population for the 4 population values. Use the function 'percentageOfWorld1' that you created earlier.
+
+const percentages2 = [];
+
+for (let i = 0; i < populations.length; i++) {
+    const perc = percentageOfWorld1(populations[i]);
+    percentages2.push(perc);
+}
+console.log(percentages2);
+
+// 3 Confirm that 'percentages2' contains exactly the same values as the 'percentages' array that we created manually in the previous assignment, and reflect on how much better this solution is
+
+
+
+// ***** Looping Backwards and Loops in Loops *****
+
+// 1 Store this array of arrays into a variable called 'listOfNeighbours' [['Canada', 'Mexico'], ['Spain'], ['Norway', 'Sweden', 'Russia']];
+const listOfNeighbours = [
+    ['Canada', 'Mexico'],
+    ['Spain'],
+    ['Norway', 'Sweden', 'Russia']
+];
+
+for (let i = 0; i < listOfNeighbours.length; i++) {
+    for (let y = 0; y < listOfNeighbours[i].length; y++) {
+        // console.log(`${listOfNeighbours[y] }`);
+    }
+    console.log(listOfNeighbours[i]);
+}
+
+
+// 2 Log only the neighbouring countries to the console, one by one, not the entire arrays. Log a string like 'Neighbour: Canada' for each country 
+// 3 You will need a loop inside a loop for this. This is actually a bit tricky, so don't worry if it's too difficult for you! But you can still try to figure this out anyway 😉
+
+
+// ***** The while Loop *****
+// 1 Recreate the challenge from the lecture 'Looping Arrays, Breaking and Continuing', but this time using a while loop (call the array 'percentages3')
+
+const populations = [1441, 1353, 210, 60]
+
+function percentageOfWorld1(populations) {
+    return (populations / 7900) * 100;
+}
+
+const percentages3 = [];
+
+let i = 0;
+while (i < populations.length) {
+    let perc = percentageOfWorld1(populations[i]);
+    percentages3.push(perc);
+    i++;
+
+}
+console.log(percentages3);
+
+// 2 Reflect on what solution you like better for this task: the for loop or the while
+// loop?
 */
-
-
 
 /*
 ##########################################################################################################################################################################################################################################################################################
@@ -524,8 +598,93 @@ console.log(eldrin.age);
 // "Eldrin is 46 years old developer, and he has a driver's license"
 
 console.log(eldrin.getSummary());
+
+
+// ***** Iteration The for Loop *****
+
+
+// for loops keeps running while condition is TRUE
+for (let rep = 1; rep <= 10; rep++) {
+    console.log(`Lifting weights repetition ${rep}`);
+
+} 
+
+// Looping arrays, Breaking and Countinuing
+const eldrin = [
+    'Eldrin',
+    'Córdova',
+    2021 - 1975,
+    'developer', ['Michael', 'Peter', 'Steven'],
+    true
+];
+
+const types = [];
+
+// eldrin[5 does NOT exist]
+for (let i = 0; i < eldrin.length; i++) {
+    console.log(eldrin[i], typeof eldrin[i]);
+
+    // Filling the types array 
+    // types[i] = typeof eldrin[i];
+
+    types.push(typeof eldrin[i]);
+}
+console.log(types);
+
+const years = [1991, 2007, 1969, 2020, 1975];
+const ages = [];
+
+for (let i = 0; i < years.length; i++) {
+    ages.push(2021 - years[i]);
+}
+console.log(ages);
+
+
+//continue and break
+console.log('---- ONLY STRINGS ----');
+for (let i = 0; i < eldrin.length; i++) {
+    if (typeof eldrin[i] !== 'string') continue;
+    console.log(eldrin[i], typeof eldrin[i]);
+}
+
+console.log('---- BREAK WITH NUMBERS ----');
+for (let i = 0; i < eldrin.length; i++) {
+    if (typeof eldrin[i] === 'number') break;
+    console.log(eldrin[i], typeof eldrin[i]);
+}
+// ***** LOOPING BACKWARDS AND LOOPS IN LOOPS ***** 
+
+for (let i = eldrin.length - 1; i >= 0; i--) {
+    console.log(i, eldrin[i]);
+}
+
+for (let exercise = 1; exercise < 4; exercise++) {
+    console.log(`-----Starting Exercise ${exercise}`);
+
+    for (let rep = 1; rep < 6; rep++) {
+        console.log(`Exercise ${exercise} Lifting weight repetition ${rep}`);
+    }
+}
 */
 
+// ***** The While LOOP *****
+// for (let rep = 1; rep <= 10; rep++) {
+//     console.log(`Lifting weights repetition ${rep}`);
+// }
+
+// let rep = 1;
+// while (rep <= 10) {
+//     console.log(`WHILE:  Lifting weights repetition ${rep}`);
+//     rep++;
+// }
+
+// let dice = Math.trunc(Math.random() * 6) + 1;
+// console.log(dice);
+
+// while (dice !== 6) {
+//     console.log(`Tou rolled a ${dice}`)
+//     dice = Math.trunc(Math.random() * 6) + 1;
+// }
 
 /*
 ##########################################################################################################################################################################################################################################################################################
@@ -633,10 +792,9 @@ console.log(tips);
 const total = [calcTip(bills[0]) + bills[0], calcTip(bills[1]) + bills[1], calcTip(bills[2]) + bills[2]];
 console.log(total);
 // Test data: 125, 555 and 44
-// Hint: Remember that an array needs a value in each position, and that value can actually be the returned value of a function! So you can just call a function as array values (so don't store the tip values in separate variables first, but right in the new 
-// array) GOOD LUCK
+// Hint: Remember that an array needs a value in each position, and that value can actually be the returned value of a function! So you can just call a function as array values (so don't store the tip values in separate variables first, but right in the new array) GOOD LUCK
 
-*/
+
 
 //  ***** Coding Challenge #3 *****
 // Let's go back to Mark and John comparing their BMIs! This time, let's use objects to implement the calculations! Remember: BMI = mass / height ** 2 = mass / (height * height) (mass in kg and height in meter)
@@ -669,11 +827,73 @@ johnSmit.calcBMI();
 console.log(markMiller);
 // 3. Log to the console who has the higher BMI, together with the full name and the respective BMI. Example: "John's BMI (28.3) is higher than Mark's (23.9)!"
 if (markMiller.bmi > johnSmit.bmi) {
-    console.log(`${markMiller.fullName}'s BMI (${markMiller.bmi} is hihigher than ${johnSmit.fullName}'s BMI (${johnSmit.bmi}) `)
+    console.log(`${markMiller.fullName}'s BMI (${markMiller.bmi} is higher than ${johnSmit.fullName}'s BMI (${johnSmit.bmi}) `)
 } else if (johnSmit.bmi > markMiller.bmi) {
-    console.log(`${johnSmit.fullName}'s BMI (${johnSmit.bmi} is hihigher than ${markMiller.fullName}'s BMI (${markMiller.bmi} ) `)
+    console.log(`${johnSmit.fullName}'s BMI (${johnSmit.bmi} is higher than ${markMiller.fullName}'s BMI (${markMiller.bmi} ) `)
 }
 
 // Test data: Marks weights 78 kg and is 1.69 m tall. John weights 92 kg and is 1.95 m 
 // tall.
 // GOOD LUCK
+
+
+
+// ***** Coding Challenge #4 *****
+// Let's improve Steven's tip calculator even more, this time using loops!
+// Your tasks:
+// 1. Create an array 'bills' containing all 10 test bill values
+
+const bill = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
+
+// 2. Create empty arrays for the tips and the totals ('tips' and 'totals')
+const tips = [];
+const totals = [];
+
+// 3. Use the 'calcTip' function we wrote before (no need to repeat) to calculate tips and total values (bill + tip) for every bill value in the bills array. Use a for loop to perform the 10 calculations!
+
+const calcTip = function(bill) {
+    return bill <= 300 && bill >= 50 ? bill * 0.15 : bill * 0.2;
+}
+
+for (let i = 0; i < bill.length; i++) {
+    const tip = calcTip(bill[i]);
+    tips.push(tip);
+    totals.push(tip + bill[i]);
+}
+// This is not necessary solution is more simple
+// for (let y = 0; y < tips.length; y++) {
+//     const total = tips[y] + bill[y];
+//     totals.push(total);
+// }
+console.log(bill, tips, totals);
+
+
+// Test data: 22, 295, 176, 440, 37, 105, 10, 1100, 86 and 52
+// Hints: Call ‘calcTip ‘in the loop and use the push method to add values to the tips and totals arrays.
+
+
+// Bonus:
+// 4. Bonus: Write a function 'calcAverage' which takes an array called 'arr' as an argument. This function calculates the average of all numbers in the given array. This is a difficult challenge (we haven't done this before)! Here is how to 
+// solve it:
+// const arr = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
+// let sum = 0;
+// for (let i = 0; i < arr.length; i++) {
+//     sum = sum + arr[i]; 
+//     const average = sum / i + 1;
+//     console.log(average, sum)
+// }
+// 4.1. First, you will need to add up all values in the array. To do the addition, start by creating a variable 'sum' that starts at 0. Then loop over the array using a for loop. In each iteration, add the current value to the 'sum' variable. This way, by the end of the loop, you have all values added together
+const calcAverage = function(arr) {
+    let sum = 0;
+    for (let i = 0; i < arr.length; i++) {
+        //sum = sum +arr[i];
+        sum += arr[i];
+    }
+    return sum / arr.length;
+}
+console.log(calcAverage([1, 2, 3]));
+console.log(calcAverage(totals));
+console.log(calcAverage(tips));
+// 4.2. To calculate the average, divide the sum you calculated before by the length of the array (because that's the number of elements) 
+// 4.3. Call the function with the 'totals' array GOOD LUCK
+*/
