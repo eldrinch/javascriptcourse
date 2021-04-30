@@ -1,7 +1,11 @@
 {
     "cSpell.words": [
+        "Caprese",
+        "Tavanti",
+        "destructure",
         "eldrin",
         "highscore",
         "neighbours"
-    ]
+    ],
+    "markdown.preview.breaks": true
 }
