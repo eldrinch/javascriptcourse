@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!--Criando um CSS dentro da nossa página-->
+    <style>
+      /*Criando um estilo nativo em html*/
+      body {
+        background-color: yellow;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 18px;
+        color: #00bfff;
+      }
+      /*Criando im estilo de CSS para classe*/
+      .mensagem {
+        color: red;
+      }
+    </style>
+
+    <!--Criando scripts em JavaScript-->
+    <script>
+      //Mensagem de boas vindas
+      //alert ("Sejam todos bem vindos a nossa aula de JavaScript");
+
+      // Criando uma variável de armazenamento para o nosso prompt
+      var nome_usuario;
+      // Criando uma interação com o usuário
+      /*nome_usuario=prompt ("Seja bem vindo a aula de JavaScript, qual é o seu nome","Digite o seu nome");
+        alert ("Seja bem vindo(a) "+nome_usuario);*/
+
+      //Trabalhando com variáveis dentro do JavaScript e inseriu um valor
+      var nome = 'Sejam bem vindos a ';
+      var empresa = 'Gama Academy';
+
+      // Criando somente uma variável sem valor agregado
+      var num1, num2, soma, subtracao, divisao, multiplicacao;
+      // Agregando um valor a variável
+      num1 = 5;
+      num2 = 6;
+
+      //alert (nome+empresa);
+
+      //Inserindo o resultado de variáveis dentro da nossa página
+      //document.write(nome+empresa+"<br> com o professor Ricardo A. Bontempo <br>");
+
+      //Calculando as variáveis
+      soma = num1 + num2;
+      subtracao = num1 - num2;
+      multiplicacao = num1 * num2;
+      divisao = num1 / num2;
+
+      document.write(`A soma de ${num1} e ${num2} é ${soma} <br>`);
+      document.write(`A subtração de ${num1} e ${num2} é ${subtracao} <br>`);
+      document.write(
+        `A multiplicação de ${num1} e ${num2} é ${multiplicacao} <br>`
+      );
+      document.write(`A divisão de ${num1} e ${num2} é ${divisao} <br>`);
+
+      function resultados_calculado() {
+        alert('Olá.... :-)');
+      }
+
+      //Procedimento de validação de campos do formulário
+      function validar() {
+        var nome = cadastro.nome_cliente.value;
+        var email = cadastro.email_usuario.value;
+
+        //alert(nome+" - "+email);
+        if (nome == '') {
+          alert('o preenchimento do campo nome é obrigatório');
+          cadastro.nome_cliente.focus();
+          return false;
+        }
+
+        if (email == '') {
+          alert('preencha o email com um endereço válido');
+          cadastro.email_usuario.focus();
+          return false;
+        }
+
+        alert(
+          'Seja bem vindo ' +
+            nome +
+            ' em breve entraremos em contato pelo email ' +
+            email
+        );
+      }
+    </script>
+  </head>
+  <body>
+    <!--Criando um botão na nossa página-->
+    <br />
+    <button onclick="resultados_calculado()">Calculo</button>
+    <br />
+    <!-- Agregando o valor do JavaScript no parágrafo-->
+    <p id="mensagem" class="mensagem"></p>
+
+    <script>
+      // Inserindo o conteúdo de um javascript dentro de um parágrafo
+      document.getElementById('mensagem').innerHTML =
+        nome + empresa + '<br> com o professor Ricardo A. Bontempo <br>';
+    </script>
+
+    <p id="frutas" class="mensagem"></p>
+    <!-- Trabalhando com JS do tipo matriz ou array-->
+    <script>
+      const frutas = ['laranja', 'melancia', 'uva', 'pera'];
+      //Permite mostrar o index do registro da matriz em questão
+      //document.getElementById("frutas").innerHTML=frutas[1];
+
+      // Permite mostrar todo o conteúdo dentro da variável matriz
+      document.getElementById('frutas').innerHTML = frutas;
+
+      //Criando laços de repetição dentro da nossa matriz
+
+      //alert(frutas.length);
+
+      //alert("Número de vezes que estamos rodando "+contador);
+      var resultado;
+      for (contador = 0; contador < frutas.length; contador++) {
+        resultado = '<br> Fruta ' + contador + ' - ' + frutas[contador];
+        ('<br>');
+        document.getElementById('frutas').innerHTML += resultado;
+      }
+
+      //Criando um processo de loop / laço
+      var gatinho = 0;
+
+      while (gatinho < 10) {
+        document.getElementById('frutas').innerHTML +=
+          ' <br> O número é  ' + gatinho;
+        gatinho++;
+      }
+    </script>
+
+    <!--Criando um formulário dentro da nossa página-->
+    <form id="cadastro" method="POST">
+      <label>Nome:</label>
+      <input type="text" name="nome_cliente" /><br />
+      <label>E-mail:</label>
+      <input type="email" name="email_usuario" /><br />
+      <input type="submit" onclick="return validar()" value="Enviar" />
+    </form>
+  </body>
+</html>

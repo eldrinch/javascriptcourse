@@ -897,3 +897,8 @@ console.log(calcAverage(tips));
 // 4.2. To calculate the average, divide the sum you calculated before by the length of the array (because that's the number of elements) 
 // 4.3. Call the function with the 'totals' array GOOD LUCK
 */
+let a=2;
+if(a<1000){
+    a=a*2
+    return a
+}

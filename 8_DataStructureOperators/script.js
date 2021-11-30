@@ -70,7 +70,201 @@ const restaurant = {
   },
 };
 
+/////////////////////////////////////////////////////////
+// ##### 118 DATA STRUCTURES, MODERN OPERATORS AND STRINGS #####
+// There are essentially three sources of data.
+// First: Form the program itself: Data written directly in source code (e.g. status message) that will be displayed on a webpage based on user actions.
+
+// Second: From the UI user interface, Data input from the user or data written in DOM (e.g. tasks in to app the users tasks in a todo app or expenses in a budget app or anything like that.) from the web page it can either be data that the user inputs into some form or data test already written somehow in the DOM.
+
+// Third: External Sources. Data fetched for example from web Application Cache(e.g. recipe objects) API stands for Application Programming Interface use a web API to get data from other web applications.
+
+// We usually always have collections of data that we then need to store somewhere.  we use data structures, there are four built-in data structures in JavaScript. we need a way of deciding between them.
+
+// The first decision What we just need
+// Do we need a simple list of values? We're gonna use an array or a set.
+// Do we need key value pairs?, We need an object or a map.
+// Key value pair we have a way of describing the values, so by using the key, in a list like an array or a set, we simply have the values without any description
+
+// Data from web APIs usually comes in a special data format called JSON is essentially just text so a long string but it can easily be converted to JavaScript objects because it uses the same formatting as JavaScript objects and arrays. So here we have three objects that describe recipes. Title ans a publisher values are then described using a key,  each of these recipe objects in itself can be seen as a value. Creating an array of objects is extremely common in JavaScript.
+// JSON data format example;
+// {
+//   'count':3,
+//   'recipes':[
+//     {
+//       'publisher': '101 cookbooks',
+//       'title': 'Best pizza Dough Ever',
+//     },
+//   ],
+// }
+// Other Built-in
+// Mention that there are also WeakSets and WeakMaps data structures in JavaScript.
+// NON-BUILT IN JavaScript;
+// There are even more data structures that are used in programming, but which are not built into JavaScript, these can be stacks, queues, linked lists, trees or hash tables.
+
+const ARRAYS = ['code', 'eat', 'code']; // (3) ["code", "eat", "code"]
+// Use when you need ORDERED list of values (might contain duplicates)
+// Use when you need MANIPULATE data because there are a ton of useful array methods.
+
+const SETS = new Set(['code', 'eat', 'code']); // Set(2) {"code", "eat"}
+// Use when you need to work with UNIQUE values.
+// Use when HIGH-PERFORMANCE is really important because operations like searching for an item or deleting an item from a set can be up to 10 times faster in sets than in arrays.
+// Use or REMOVE DUPLICATES from ARRAYS.
+
+// Sets, not meant to replace arrays but rather to compliment them whenever we are dealing with unique values.
+
+const OBJECTS = {
+  task: 'code',
+  date: 'today',
+  repeat: 'true',
+};
+
+// More TRADITIONAL key/value store ('abused' objects), because we didn't have maps before ES6
+// Easier to write and access values with '.' and '[]' it is to write them and to access data by simply using the dot or the brackets operator.
+// Use when you need to include FUNCTIONS (methods)
+// Use when working with JSON (can convert to map)
+
+const MAPS = new Map([
+  ['task', 'code'],
+  ['date', 'today'],
+  ['repeat', 'true'],
+]);
+// Better performance
+// Keys can have ANY data type
+// Easy to iterate
+// Easy to compute size of a map.
+// Use when you simply need to map key to values,  
+// Use when you need keeys that are NOT strings
+
 /*
+
+/////////////////////////////////////////////////////////
+// ##### 117 MAPS: ITERATION #####
+// Other way to fill a MAP, using a array of array, where the first element is the key and the next is the value
+const question = new Map([
+  ['question', 'What is the best programming language in the world?'],
+  [1, 'C'],
+  [2, 'Java'],
+  [3, 'JavaScript'],
+  ['correct', 3],
+  [true, 'correct'],
+  [false, 'Try again!'],
+]);
+console.log(question);
+// Convert object to map
+console.log(Object.entries(openingHours));
+
+const hoursMap = new Map(Object.entries(openingHours)); //we have a Map here. trick when u need a map when u have a object
+console.log(hoursMap);
+// Iteration is possible because MAPS are ITERABLES and the for loop is available for them, objects convert iterables when use .entries
+// try to print if the key is a number
+console.log(question.get('question'));
+for (const [key, value] of question) {
+  if (typeof key === 'number') console.log(`Answer ${key}: ${value}`);
+}
+//const answer = Number(prompt(`Your answer`));
+const answer = 3;
+console.log(answer);
+// observe than use a first get to compare the value 3 and then nest in other GET 'true or false' for get the value.
+console.log(question.get(question.get('correct') === answer));
+
+console.log('----- Convert a Map back to array -----');
+console.log(...question);
+console.log(question.entries()); // MapIterator
+console.log([...question.keys()]); // (7) ["question", 1, 2, 3, "correct", true, false]
+console.log([...question.values()]); // (7) ["What is the ---","C" ---]
+
+
+/////////////////////////////////////////////////////////
+// ##### 116 MAPS: FUNDAMENTALS #####
+// Map is a data structure that we can use to map values to keys. So, just like an object data is stored in key value pairs in maps. in maps, the keys can have any type in objects, in objects the keys are basically always strings but in maps it could even be objects, or arrays, or other maps.
+const rest = new Map();
+// we can fill up  the map with a set method
+rest.set('name', 'Clasico Italiano');
+rest.set(1, 'Firenze Italy');
+console.log(rest.set(2, 'Lisbon, Portugal')); //show all content 'rest'
+// console.log(rest);
+
+rest
+  .set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
+  .set('open', 11)
+  .set('close', 23)
+  .set(true, 'We are open ;D')
+  .set(false, 'We are close :(');
+
+// To read data from a map we use the GET method. ll we need to do is to pass in the name of the key.
+
+console.log(rest.get('name'));
+console.log(rest.get(true));
+console.log(rest.get(1));
+
+const time = 21;
+console.log(rest.get(time > rest.get('open') && time < rest.get('close')));
+
+// We can also check if a map contains a certain key. THe HAS method
+console.log(rest.has('categories'));
+rest.delete(2); //delete a key 2
+//rest.clear(); //clear all keys from the object
+
+console.log(rest.size); //the number of keys this object has, 8
+// ############
+rest.set([1, 2], 'Test'); //we create a key array but when we call don't work
+console.log(rest.get([1, 2])); // try to call the key but is UNDEFINED the reason for that is these two arrays are actually not the same object. even though we wrote them in the same way and so, they have the same elements, they are not the same object in the heap, And, the key here is exactly this object. the key define like key and no the array call in the GET method.
+// ############
+// to this work we do the next, first create a variable
+const array = [1, 2]; // and them
+rest.set(array, 'teste');
+console.log(rest.get(array)); // this show that we can use objects as map keys
+// Use the map in a DOM, is the key of this map entry, and it can enable some advanced functionality.
+rest.set(document.querySelector('h1'), 'Heading');
+
+console.log(rest);
+
+/////////////////////////////////////////////////////////
+// ##### 115 SETS #####
+// SETS is a collection of unique values, that means that a SET can never have any duplicates. And that property makes them useful in certain situations, the order of elements in the set is irrelevant
+//CREATE a new SET
+const ordersSet = new Set([
+  'Pasta',
+  'Pizza',
+  'Pizza',
+  'Risotto',
+  'Pasta',
+  'Pizza',
+]);
+console.log(ordersSet); //Ser(3){"Pasta","Pizza","Rissoto"}
+// Pass a string, is iterable
+console.log(new Set('Eldrin')); //{E,l,d,r,i,n}
+// to know how many are the same element
+console.log(ordersSet.size);
+// to know if exist or not the element
+console.log(ordersSet.has('Pizza'));
+console.log(ordersSet.has('Bread'));
+// to add a element
+ordersSet.add('Garlic Bread');
+ordersSet.add('Garlic Bread');
+console.log(ordersSet);
+//to delete a element
+// ordersSet.delete('Risotto');
+// ordersSet.delete('Pizza'); //Delete all elements Pizza
+// ordersSet.clear(); //Delete all the elements
+// In sets there are no indexes. there is no way of getting values out of a set. Because if all values are unique, and if their order does not matter.
+console.log(ordersSet);
+//Set are iterables
+for (const order of ordersSet) console.log(order);
+
+//Example
+const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
+const staffUnique = [...new Set(staff)];
+console.log(staffUnique);
+
+// This way don't need create a new variable 'staffUnique'
+console.log(
+  new Set(['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter']).size
+);
+
+console.log(new Set('eldrinrafaelcordovaherencia').size);
+
 ////////////////////////////////////////////////////////
 // ##### 113 LOOPING OBJECTS: Object keys, Values and entries #####
 
@@ -222,12 +416,15 @@ else console.log('use array empty');
 // ##### 105, 106 RESUME SPREAD AND REST #####
     // The SPREAD and REST syntax both look exactly the same but they work in opposite ways depending on where they are used.SPREAD operator is used where we would otherwise write values, separated by a comma. The REST pattern is basically used where we would otherwise write variable names separated by commas.
     //The REST pattern can be used where we would write variable names, separated by commas and not values separated by commas.
-    // 106 ##### REST PATTERN AND OARAMETERS #####
+    
+    // 106 ##### REST PATTERN AND PARAMETERS #####
     // ### DESTRUCTURING ###
+
     // SPREAD, because on RIGHT side of '='
     const arr = [1, 2, ...[3, 4]];
     const [a, b ...others] = [1, 2, 3, 4, 5];
     console.log(a, b, others); //  1 2 [3, 4, 5] Create array others 
+
     // REST, because on LEFT side of =, the rest can be collect the first and third element and add the other array, there can only ever be ONE rest element in any destructuring assignment and most be the last element. 
     const [pizza, , rissoto, ...otherFood] = [
         ...restaurant.mainMenu,
@@ -438,7 +635,7 @@ const game = {
 // 1. Create one player array for each team (variables 'players1' and 'players2')
 const [players1, players2] = game.players;
 console.log(players1, players2);
-// 2. The first player in any player array is the goalkeeper and the others are field players. For ern unich (team 1) create one variable ('gk') with the goalkeeper's name, and one array ieldPlayers') with ll the remaining 10 field players
+// 2. The first player in any player array is the goalkeeper and the others are field players. For ern unich (team 1) create one variable ('gk') with the goalkeeper's name, and one array fieldPlayers') with ll the remaining 10 field players
 const [gk, ...fieldPlayers] = players1; // the REST create a new array 'fieldPlayers'
 console.log(gk, fieldPlayers);
 // 3. Create an array 'allPlayers' containing all players of both teams (22 players)
@@ -452,7 +649,7 @@ const {
     odds: { team1, x: draw, team2 },
 } = game;
 console.log(team1, draw, team2);
-// 6. Write a function ('printGoals') that receives an arbitrary number of player names (not an array)  rints each of them to the console, along with the number of goals that were scored in total mber of layer names passed in)
+// 6. Write a function ('printGoals') that receives an arbitrary number of player names (not an array)  prints each of them to the console, along with the number of goals that were scored in total number of layer names passed in)
 const printGoals = function(...players) {
     console.log(players); [4]
     console.log(`${players.length} goals were scored`);
@@ -490,7 +687,7 @@ for (const odd of oddsGame) sum1 += odd;
 sum1 /= oddsGame.length;
 console.log(sum1);
 
-// 3. Print the 3 odds to the console, but in a nice formatted way, exaclty like this:
+// 3. Print the 3 odds to the console, but in a nice formatted way, exactly like this:
 //       Odd of victory Bayern Munich: 1.33
 //       Odd of draw: 3.25
 //       Odd of victory Borrussia Dortmund: 6.5

@@ -190,20 +190,8 @@ console.log(`${country}'s population is ${population>33 ? 'above' : 'below'} ave
 // 2 After checking the result, change the population temporarily to 13 and then to 130. See the different results, and set the population back to original
 */
 
-
-
-
-
-
-
-
-
-
 /*
 ##########################################################################################################################################################################################################################################################################################*/
-
-
-
 
 /*console.log(typeof );
 let js = 'amazing';
@@ -276,7 +264,6 @@ let x = 10 + 5; //5
 x += 10; // x = x+10 = 25
 x *= 4; // x = x*4 = 100
 x++; // x = x+1
-x--;
 x--;
 console.log(x);
 
@@ -512,9 +499,7 @@ console.log(drink2);
 console.log(`I like to drink ${age >= 18 ? 'wine' : 'water'}`);
 */
 
-// 
-
-
+//
 
 /*
 //##########################################################################################################################################################################################################################################################################################
@@ -633,12 +618,152 @@ if (scoreKoalas > scoreDolphins && scoreKoalas >= 100) {
 // Value X is between 50 and 300, if it's >= 50 && <= 300 😉
 // GOOD LUCK 😀
 
+// const bill = 275;
 
+// const tip = bill <= 300 && bill >= 50 ? bill * 0.15 : bill * 0.2;
 
-const bill = 275;
+// console.log(bill, tip, typeof bill, typeof tip);
 
-const tip = (bill <= 300 && bill >= 50) ? bill * 0.15 : bill * 0.2;
+// console.log(
+//   `The bill was  ${bill}, the tip was ${tip}, and the total value ${bill + tip}`
+// );
 
-console.log(bill, tip, typeof bill, typeof tip);
+// //#################################### CONSTRUTOR, GET AND SET ####################
 
-console.log(`The bill was  ${bill}, the tip was ${tip}, and the total value ${bill+tip}`);
+// class BookA {
+//   constructor(title, author, pages) {
+//     this.title = title;
+//     this.author = author;
+//     this.pages = pages;
+//   }
+//   read() {
+//     return `estou lendo ${this.title} ${this.author} ${this.pages}`;
+//   }
+// }
+
+// class ItBook extends BookA {
+//   constructor(title, author, pages, technology) {
+//     super(title, author, pages);
+//     this.technology = technology;
+//   }
+// }
+
+// let itBookA = new ItBook('Algoritmos para viver', 'gruner', 500);
+// let book = new BookA('Algoritmos para viver', 'gruner', 500);
+// let otherbook = new BookA('reike', 'Jhony', 400);
+// console.log(book, otherbook);
+// console.log(itBook.title);
+
+// class Person {
+//   constructor(name) {
+//     this._name = name;
+//   }
+//   get name() {
+//     return this._name;
+//   }
+
+//   set name(value) {
+//     this._name = value;
+//   }
+// }
+
+// let person = new Person('Eldrin');
+// person.name = 'Rafael';
+// console.log(person.name);
+
+// var uno = 'this is a text';
+// console.log(uno.indexOf('h', 0));
+
+//////#############  divisibilidade ##############
+//Divisivel por 3 => 'Fizz'
+//Divisivel por 5 => 'Buzz'
+//Divisivel por 3 e 5 => 'FizzBuzz'
+
+// let resultado = fizzBuz(9);
+// console.log(resultado);
+
+// function fizzBuz(entrada) {
+//   if (typeof entrada !== 'number') {
+//     return 'Não é numero';
+//   }
+//   if (entrada % 3 === 0 && entrada % 5 === 0) {
+//     return 'Fizzbuzz';
+//   }
+//   if (entrada % 3 === 0) {
+//     return 'Fizz';
+//   }
+
+//   if (entrada % 5 === 0) {
+//     return 'Buzz';
+//   }
+//   return entrada;
+// }
+
+// // ###############REVERSE STRING #################
+
+// let newStr = '';
+// function reverseString(str) {
+//   for (let i = str.length - 1; i >= 0; i--) {
+//     newStr += str[i];
+//     console.log(newStr);
+//   }
+// }
+// let resulStr = reverseString('Presta atencao');
+// console.log(resulStr);
+
+// ################# CONVERSOR DE TEMPERATURA #######
+
+// function convertToFarenheit(value) {
+//   return value * 1.8 + 32;
+// }
+// let rsltConvert = convertToFarenheit(32);
+// console.log(`O valor Farenheit é ${rsltConvert}`);
+
+// ##############TO DO LIST #################
+
+const listContainer = document.querySelector('[data-lists]');
+const newlistForm = document.querySelector('[data-new-list-form]');
+const newListInput = document.querySelector('[data-new-list-input]');
+
+let lists = [];
+
+//testando
+// let lists = [
+//   {
+//     id: 1,
+//     name: 'html',
+//   },
+//   { id: 2, name: 'js' },
+// ];
+
+newlistForm.addEventListener('submit', function (e) {
+  // toda vez que o navegador recebe um submit  a pagina é atualizada
+  e.preventDefault();
+  const listName = newListInput.value;
+  if (listName === null || listName === '') return;
+  const list = createList(listName);
+  newListInput.value = null;
+  lists.push(list);
+  render();
+});
+
+function render() {
+  clearElement(listContainer);
+  lists.forEach(function (list) {
+    const item = document.createElement('li');
+    item.classList.add('item');
+    // item.innerText = list;
+    item.innerText = list.name;
+    listContainer.appendChild(item);
+  });
+}
+
+function createList(name) {
+  return { id: Date.now().toString(), name: name };
+}
+
+function clearElement(element) {
+  while (element.firstChild) {
+    element.removeChild(element.firstChild);
+  }
+}

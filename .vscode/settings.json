@@ -1,11 +1,15 @@
 {
-    "cSpell.words": [
-        "Caprese",
-        "Tavanti",
-        "destructure",
-        "eldrin",
-        "highscore",
-        "neighbours"
-    ],
-    "markdown.preview.breaks": true
+  "cSpell.words": [
+    "Caprese",
+    "Tavanti",
+    "destructure",
+    "eldrin",
+    "highscore",
+    "neighbours"
+  ],
+"markdown.preview.breaks": true,
+"editor.tabSize": 2,
+"editor.renderWhitespace": "all",
+"workbench.editor.enablePreview": false,
+"editor.formatOnSave": true
 }
