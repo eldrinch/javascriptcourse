@@ -897,8 +897,107 @@ console.log(calcAverage(tips));
 // 4.2. To calculate the average, divide the sum you calculated before by the length of the array (because that's the number of elements) 
 // 4.3. Call the function with the 'totals' array GOOD LUCK
 */
-let a=2;
-if(a<1000){
-    a=a*2
-    return a
-}
+
+//Imprima na telas os numero pares existentes entre 0 e 100
+// for (let i = 0; i <= 100; i++) {
+//   if (i % 2 === 0) {
+//     console.log(i);
+//   }
+// }
+
+//Crie um algoritmo que receba tres notas de um aluno, calcule sua media e mostre, se media >=7 aprovado, si medis5<x<7 recuperaçoa, si media<5 reprovado
+
+// function calculeMedia(nota1, nota2, nota3) {
+//   let media = (nota1 + nota2 + nota3) / 3;
+//   if (media >= 7) {
+//     return 'Aprovado';
+//   }
+//   if (media >= 5 && media <= 7) {
+//     return 'Recuparaçao';
+//   }
+//   if (media < 5) {
+//     return 'Reprovado';
+//   }
+// }
+
+// console.log(calculeMedia(8, 6, 9));
+
+//Meetodos de array
+//MAP/ cria um novo array com as altera;oes que desejamos
+// const alunas = ['Paula', 'Maria', 'Adriana', 'Luciana', 'Monica'];
+// alunas.map(aluna => console.log(aluna));
+
+// //2 FILTER? retorna um novo array com os elementos filtrados
+// const numeros = [12, 15, 48, 98, 56, 71];
+
+// const numerosImpar = numeros.filter(numero => numero % 2 != 0);
+// console.log(numerosImpar);
+
+// const numerosPar = numeros.filter(numero => numero % 2 == 0);
+// console.log(numerosPar);
+
+// //FIND encontra e retorna o primeiro elemento que achar igual ao elemento passado por parametro
+
+// const produtos = ['geladeira', 'fogao', 'cama', 'mesa'];
+// const findCama = produtos.find(produto => produto === 'cama');
+// console.log(findCama);
+// const findFogao = produtos.find(produto => produto === 'fogao');
+// console.log(findFogao);
+
+// //SORT ordena o array
+// const num = [56, 85, 14, 23, 9, 2, 7, 16, 46, 18, 95];
+// const crescente = num.sort((a, b) => a - b);
+// console.log(crescente);
+// const decrescente = num.sort((a, b) => b - a);
+// console.log(decrescente);
+
+// //REDUCE Reduz nosso array a um resultado de uma operaçao matematica
+// const numbersA = [25, 35, 5];
+// const somNumbers = numbersA.reduce((valueAnterior, valueAtual) => {
+//   return valueAnterior + valueAtual;
+// });
+// console.log(somNumbers);
+
+//OBJETOS
+// const datos = {
+//   nome: 'Eldrin',
+//   idade: 46,
+//   profissao: 'Developer',
+// };
+// console.log(datos.nome);
+// //notação COLCHETES a propiedade se para entre aspas
+// console.log(datos['profissao']);
+// //como DESESTRUTURAR OBJETOS
+// const { nome, idade, profissao } = datos;
+// console.log(nome);
+// console.log(idade);
+// console.log(profissao);
+
+//ARRAY de OBJETOS
+
+const filmes = [
+  {
+    id: 1,
+    titulo: '300',
+    descricao: 'Leonidas e seus 300 guerreiros',
+    duracao: 120,
+  },
+  {
+    id: 2,
+    titulo: 'Amadeus',
+    descricao: 'Filme da vida de Mozart',
+    duracao: 180,
+  },
+  {
+    id: 3,
+    titulo: 'Uma mente brilhante',
+    descricao: 'historia de um genio da matematica',
+    duracao: 240,
+  },
+];
+
+const [{ id, titulo, descricao, duracao }] = filmes;
+
+console.log(titulo);
+
+filmes.map(filme => console.log(filme.descricao));
