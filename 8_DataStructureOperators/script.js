@@ -71,6 +71,59 @@ const restaurant = {
 };
 
 /////////////////////////////////////////////////////////
+// ##### 121 WORKING WITH STRINGS - PART1 #####
+
+const airplane = 'GOL linhas aereas';
+const plane = 'A320';
+console.log('');
+
+console.log(plane[0]);
+console.log(plane[1]);
+console.log(plane[2]);
+
+console.log(airline.length);
+console.log('B737'.length);
+
+
+
+
+
+
+
+
+////////////////////////////////////////////
+//######### 109 LOGICAL ASSIGNMENT OPERATOR #########
+
+// const rest1 = {
+//   name: 'Capri',
+//   numGuests: 0,
+// };
+
+// const rest2 = {
+//   name: 'La Piazza',
+//   owner: 'Giovanni Rossi',
+// };
+
+// // rest1.numGuests = rest1.numGuests  || 10;
+// // rest2.numberGuests = rest2.numberGuests  || 10;
+
+// // rest1.numGuests ||= 10;
+// // rest2.numGuests ||= 10;
+// // the logical knowledge assigment operator for the nullish coalescing operator
+// rest1.numGuests ??= 10;
+// rest2.numGuests ??= 10;
+
+// //AND assigment operator
+// // rest1.owner = rest1.owner && '<ANONYMOUS>';
+// // rest2.owner = rest2.owner && '<ANONYMOUS>';
+
+// rest1.owner &&= '<ANONYMOUS>';
+// rest2.owner &&= '<ANONYMOUS>';
+
+// console.log(rest1);
+// console.log(rest2);
+
+/////////////////////////////////////////////////////////
 // ##### 118 DATA STRUCTURES, MODERN OPERATORS AND STRINGS #####
 // There are essentially three sources of data.
 // First: Form the program itself: Data written directly in source code (e.g. status message) that will be displayed on a webpage based on user actions.
@@ -133,7 +186,7 @@ const MAPS = new Map([
 // Keys can have ANY data type
 // Easy to iterate
 // Easy to compute size of a map.
-// Use when you simply need to map key to values,  
+// Use when you simply need to map key to values,
 // Use when you need keeys that are NOT strings
 
 /*
@@ -171,7 +224,7 @@ console.log(question.get(question.get('correct') === answer));
 console.log('----- Convert a Map back to array -----');
 console.log(...question);
 console.log(question.entries()); // MapIterator
-console.log([...question.keys()]); // (7) ["question", 1, 2, 3, "correct", true, false]
+console.log([...question.keys()]); // (7) ["question", 1, 2, 3, "correct", true, false]z
 console.log([...question.values()]); // (7) ["What is the ---","C" ---]
 
 
@@ -714,3 +767,42 @@ for (const player of game.scored) {
 console.log(scorers);
 // GOOD LUCK 😀
 */
+
+// ###### Coding Challenge #3 #####
+/*1. Crate an array 'events' of the differret game events that happened (no duplicates)
+2. After the game has finishes, is was found that the yellow card from minute 64 was unfair. So remove this event from the game log.
+3. Print the following string to the console:"An event happend , on average, every 9 minutes" (keep in mind that a game has 90 minuts).
+4. Loop over the events and log them to the console, marking whether it's in the first half or second half (after 45 min) of the game, like this: [FIRST HALF]17: GOAL
+GOOD LUCK */
+
+// const gameEvents = new Map([
+//   [17, 'GOAL'],
+//   [36, 'Substitution'],
+//   [47, 'GOAL'],
+//   [61, 'Substitution'],
+//   [64, 'Yellow Card'],
+//   [69, 'Red Card'],
+//   [70, 'Substitution'],
+//   [72, 'Substitution'],
+//   [76, 'GOAL'],
+//   [80, 'GOAL'],
+//   [92, 'Yellow Card'],
+// ]);
+
+// const events = new Set (gameEvents.values());
+// console.log(events);
+
+// //2.
+// gameEvents.delete(64);
+// //3.
+// consolelog(`An event happend , on average, every ${90/gameEvents.size} minutes`);
+// const time = [...gameEvents.keys()].pop();
+// console.log(time);
+// consolelog(`An event happend , on average, every ${time/gameEvents.size} minutes`);
+// //4.
+// for (const [min,event]of gameEvents){
+//   const half = min <= 45? 'FIRST': 'SECOND';
+//   console.log(`[${half}[HALF] ${min}: ${event} `)
+// }
+
+
