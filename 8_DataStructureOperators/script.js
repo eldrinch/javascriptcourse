@@ -70,26 +70,150 @@ const restaurant = {
   },
 };
 
+////////////////////////////////////////////
+//######### 122 WORKING WITH STRINGS - PART3 ########
+/////Split and join
+// console.log('a+very+nice+string'.split('+')); //(4) ['a', 'very', 'nice', 'string']
+// console.log('Eldrin Cordova'.split(' ')); //(2) ['Eldrin', 'Cordova']
+
+// const [firstName, lastName] = 'Eldrin Cordova'.split(' ');
+
+// const newName = ['Mr.', firstName, lastName.toUpperCase()].join(' ');
+// console.log(newName);  //Mr. Eldrin CORDOVA
+
+// const capitalizeName = function (name) {
+//   const names = name.split(' ');
+//   const namesUpper = [];
+
+//   for (const n of names) {
+//     namesUpper.push(n[0].toUpperCase() + n.slice(1));
+//     // namesUpper.push(n.replace(n[0],n[0].toUpperCase()))//replace(in position zero, replace the position zero for ...)
+//   }
+//   console.log(namesUpper.join(' '));
+// };
+// capitalizeName('jessica ann smith davis'); //Jessica Ann Smith Davis
+// capitalizeName('eldrin cordova'); //Eldrin Cordova
+
+// // Padding
+// const message = 'Go to gate 23!';
+// console.log(message.padStart(20, '+')); //++++++Go to gate 23!
+// console.log('Eldrin'.padStart(20, '+')); //++++++++++++++Eldrin
+// console.log(message.padStart(20, '+').padEnd(30, '+')); //++++++Go to gate 23!++++++++++
+// console.log('Eldrin'.padStart(20, '+').padEnd(30, '+')); //++++++++++++++Eldrin++++++++++
+
+// const maskCreditCard = function (number) {
+//   const chToString = number + ''; //easy way to convert a number in a string
+//   const last = chToString.slice(-4);
+//   return last.padStart(chToString.length, '*');
+// };
+// console.log(maskCreditCard(13546845));  //****6845
+// console.log(maskCreditCard(354616465145));  //********5145
+// console.log(maskCreditCard(863216876998));  //********6998
+
+// //Repeat
+// const message2 = 'Bad waether... All Departures Delayed \n';
+// console.log(message2.repeat(3));
+
+// const planesAirlines = function (m) {
+//   console.log(`There are ${m} planes in line ${'=|->'.repeat(m)}`);
+// };
+
+// planesAirlines(3) //There are 3 planes in line =|->=|->=|->
+// planesAirlines(5) // There are 5 planes in line =|->=|->=|->=|->=|->
+
+////////////////////////////////////////////
+//######### 122 WORKING WITH STRINGS - PART2 ########
+// const airline = 'TAP Air Portugal';
+// console.log(airline.toLowerCase()); //tap air portugal
+// console.log(airline.toUpperCase()); //TAP AIR PORTUGAL
+// //Fix capitalization in name
+// const passenger = 'ELdRiN';
+// const passengerLower = passenger.toLowerCase(); //eldrin
+// const passengerCorrect = passengerLower[0].toUpperCase() + passengerLower.slice(1);
+// console.log(passengerCorrect); //Eldrin
+
+// //Comparing E-MAILS
+// const email = 'hello@start.com';
+// const loginEmail = '  Hello@start.Com \n'
+
+// // const lowerEmail = loginEmail.toLowerCase();
+// // const trimmedEmail = lowerEmail.trim();
+// const normalizeEmail = loginEmail.toLowerCase().trim(); //hello@start.com
+// console.log(email === normalizeEmail); //true
+
+// //Replacing
+// const priceGB = '288,97#';
+// const priceUS = priceGB.replace('#','$').replace(',','.')
+// console.log(priceUS); //288.97$
+
+// const announcement = 'All passengers come to boarding door 23. Boarding door 23!'
+// console.log(announcement.replace('door','gate'));
+// console.log(announcement.replaceAll('door','gate'));
+
+// console.log(announcement.replace(/door/g,'gate')); //using regular expression g for global
+
+// //Booleans
+// const plane = 'Airbus A320neo'
+// console.log(plane.includes('A320')); //true
+// console.log(plane.includes('Boeing')); //false
+// console.log(plane.includes('Airb'));//true
+
+// if(plane.startsWith('Airbus') && plane.endsWith('neo')){
+//   console.log('Part of the NEW Airbus family');
+// }
+
+// //Practice exercise
+// const checkBaggage = function(items){
+//  const baggage = items.toLowerCase();
+
+//  if (baggage.includes('knife') || baggage.includes('gun')){
+//    console.log('You are NOT allowed to board');
+//  }else{
+//    console.log('Wellcome aboard!');
+//  }
+// }
+// checkBaggage('I have a laptop, some Food and  pocket Knife') //You are NOT allowed to board
+// checkBaggage('Socks and camera')//Welcome aboard!
+// checkBaggage('Got some snacks and a gun for protection')//You are NOT allowed to board
+
 /////////////////////////////////////////////////////////
 // ##### 121 WORKING WITH STRINGS - PART1 #####
 
-const airplane = 'GOL linhas aereas';
-const plane = 'A320';
-console.log('');
+// const airline = 'TAP Air Portugal';
+// const plane = 'A320';
 
-console.log(plane[0]);
-console.log(plane[1]);
-console.log(plane[2]);
+// console.log(plane[0]); //A
+// console.log(plane[1]); //3
+// console.log(plane[2]); //2
 
-console.log(airline.length);
-console.log('B737'.length);
+// console.log(airline.length); //16
+// console.log('B737'.length); //4
 
+// console.log(airline.indexOf('r')); //6
+// console.log(airline.lastIndexOf('r')); //10
+// Peace console.log(airline.indexOf('portugal')); //-1 key sensitive || certo 8
+// console.log(airline.slice(4)); //Air Portugal
+// console.log(airline.slice(4,7)); // Air
 
+// console.log(airline.slice(0, airline.indexOf(' '))); //TAP
+// console.log(airline.slice(airline.lastIndexOf(' ')+1)); //Portugal
 
+// const checkMiddleSeat = function(seat){
+//   //B and E are middle seats
+//   const s = seat.slice(-1);
+//     if(s === 'B' || s === 'E')
+//       console.log('You got the middle seat');
+//       else console.log('You got lucky');
+// }
 
+// checkMiddleSeat('11B'); //You got the middle seat
+// checkMiddleSeat('23C');//You got lucky
+// checkMiddleSeat('3E'); //You got the middle seat
 
-
-
+// console.log(new String('Eldrin')); //String{'Eldrin}
+// console.log(typeof new String('Eldrin')); //object
+// console.log(new String('Eldrin').slice(1)); //ldrin
+// console.log(typeof new String('Eldrin').slice(0)); //string
 
 ////////////////////////////////////////////
 //######### 109 LOGICAL ASSIGNMENT OPERATOR #########
@@ -805,4 +929,67 @@ GOOD LUCK */
 //   console.log(`[${half}[HALF] ${min}: ${event} `)
 // }
 
+////////////////////////////////////////
+// Coding Challenge #4
+/* 
+Write a program that receives a list of variable names writtem in underscore_case and convert them to CamelCase
+The input will come from a textarea inserted into the DOM (see code below), and conversion will happen when the buttton is pressed.
 
+THIS TEXT DATA (pasted to textarea)
+undescore_case
+ first_name
+Som_Variable
+  calculate_AGE
+delayed_departure
+
+SHOULD PRODUCE THIS OUTPUT (5 separate console.log outputs)
+
+undescore_case    ✅
+firstName         ✅✅
+somVariable       ✅✅✅
+calculateAge      ✅✅✅✅
+delayedDeparture  ✅✅✅✅✅
+
+HIBT 1: Remembaer which character  defines a new line in the text area.
+HINT 2: The solution only needs to work for a variable made out of 2 words, like a_b
+HINT 3: Start without worrying about the ✅. Tackle that only after you have the variable name conversion working
+HINT 4: This challenge is difficlt on purpose, so start waching the solution in case you'are stuck, then pause and continue!
+Afterwards, test with your own test data! GOOD LUCK!
+*/
+
+// document.body.append(document.createElement('textarea'));
+// document.body.append(document.createElement('button'));
+
+// document.querySelector('button').addEventListener('click', function () {
+//   const text = document.querySelector('textarea').value;
+//   const rows = text.split('\n');
+//   // console.log(rows);
+//   for (const [i, row] of rows.entries()) {
+//     const [first, second] = row.toLowerCase().trim().split('_');
+//     // console.log(row, first, second);
+//     const output = `${first}${second.replace(second[0],second[0].toUpperCase())}`;
+//     console.log(`${output.padEnd(20)}${'✅'.repeat(i+1)}`);
+//   }
+// });
+
+//STRING METHODS PRACTICE
+const flights = '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
+ 
+// 🔴 Delayed Departure from FAO to TXL (11h25)
+//              Arrival from BRU to FAO (11h45)
+//   🔴 Delayed Arrival from HEL to FAO (12h05)
+//            Departure from FAO to LIS (12h30)
+
+const getCode = str => str.slice(0, 3).toUpperCase();
+
+for(const fligth of flights.split('+')){
+  const [type,from,to,time] = fligth.split(';'); 
+  const type1 = `${type.startsWith('_Delayed')? '🔴': ''}${type.replaceAll('_',' ')} ${getCode(from)} to ${getCode(to)} (${time.replace(':','h')})`.padStart(40,'+')
+  console.log(type1);
+  
+
+  
+  
+
+  
+}
